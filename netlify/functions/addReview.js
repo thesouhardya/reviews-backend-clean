@@ -86,6 +86,7 @@ export async function handler(event) {
     const geminiData = await geminiResponse.json();
     const modelText =
       geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
+    console.log("Gemini raw output:", JSON.stringify(geminiData, null, 2));
     const result = safeJSON(modelText) || {};
 
     const safety = result.safety_score ?? 0;
