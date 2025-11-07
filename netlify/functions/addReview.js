@@ -37,9 +37,9 @@ export default async function handler(request, context) {
 
     // Parse body (from Framer)
     const body = await request.json();
-    const { business_id, reviewer_name, phone, content } = body;
+    const { business_id, reviewer_name, phone, email, content } = body;
 
-    if (!business_id || !reviewer_name || !phone || !content) {
+    if (!business_id || !reviewer_name || !phone || !email || !content) {
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
         {
@@ -157,6 +157,7 @@ Respond with ONLY the JSON object, nothing else.`;
         business_id,
         reviewer_name,
         phone,
+                email,
         content,
         status,
         sentiment_score: sentiment,
