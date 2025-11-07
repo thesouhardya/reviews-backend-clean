@@ -20,7 +20,8 @@ const supabase = createClient(
 const GEMINI_ENDPOINT =
 const GEMINI_ENDPOINT =
 const GEMINI_ENDPOINT =
-  "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent";
+ const GEMINI_ENDPOINT =
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 // Helper to safely parse JSON
 function safeJSON(text) {
