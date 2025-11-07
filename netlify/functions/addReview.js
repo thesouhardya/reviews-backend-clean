@@ -39,8 +39,7 @@ export default async function handler(request, context) {
     const body = await request.json();
     const { business_id, reviewer_name, phone, email, content } = body;
 
-    if (!business_id || !reviewer_name || !phone || !email || !content) {
-      return new Response(
+    if (!business_id || !reviewer_name || !phone || !content) {      return new Response(
         JSON.stringify({ error: "Missing required fields" }),
         {
           status: 400,
