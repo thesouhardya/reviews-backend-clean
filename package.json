@@ -5,5 +5,9 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.44.4",
     "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "build": "echo 'Nothing to build'",
+    "start": "netlify dev"
   }
 }
