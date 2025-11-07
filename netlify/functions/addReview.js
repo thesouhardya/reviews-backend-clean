@@ -61,16 +61,19 @@ export async function handler(event) {
     }
 
     // 1️⃣ Call Gemini API
-    const prompt = `
-    Analyze this review for inappropriate or harmful content.
-    Respond ONLY in this exact JSON structure:
-    {
-      "safety_score": number,
-      "sentiment_score": number,
-      "action": "allow" | "flag" | "block"
-    }
-    Review: "${content}"
-    `;
+  const prompt = `
+You are a strict JSON-only classifier.
+Analyze this review and respond ONLY with a valid JSON object in this format:
+
+{
+  "safety_score": number,  // between 0 (safe) and 1 (unsafe)
+  "sentiment_score": number,  // between -1 (negative) and 1 (positive)
+  "action": "allow" | "flag" | "block"
+}
+
+Review: """${content}"""
+`;
+console.log("Prompt sent to Gemini:", prompt);
 
     const geminiResponse = await fetch(
       `${GEMINI_ENDPOINT}?key=${process.env.GEMINI_KEY}`,
